@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+    Sunrise Community Clinic
+    visits.html - Doctors and Nurses record a patient's visit and see the patient's previous visits.
+    By Ronald Chinnasamy
+
+    Requirements:
+    Requires css/style.css for the look
+    Requires js/common.js for the top bar and menu
+    Requires js/visits.js for the search, the form and the history table.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visits - Sunrise Community Clinic</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <span class="clinic-name">Sunrise Community Clinic</span>
+        <span class="user-info">
+            Logged in as: <span id="user-role"></span> |
+            <a href="#" id="logout-link">Log Out</a>
+        </span>
+    </header>
+
+    <!-- Menu -->
+    <nav class="menu">
+        <a href="patients.html">Patients</a>
+        <a href="appointments.html">Appointments</a>       
+        <a href="reports.html">Reports</a>
+        <a href="admin.html" id="admin-tab">Administration</a>
+        <a href="visits.html" id="visits-tab" class="active">Visits</a>
+    </nav>
+
+    <section class="page">
+        <h2>Patient Visits</h2>
+
+        <div class="form-columns">
+
+            <!-- Left side: Patient Selector -->
+            <div>
+                <label for="patient-search">Patient (name or ID number)</label>
+                <input type="text" id="patient-search" placeholder="Search patient">
+                <button type="button" id="patient-search-button" class="button-orange">Search</button>
+        
+                <div id="patient-choice" style="display: none;">
+                    <label for="patient-select">Matching patients</label>
+                    <select id="patient-select"></select>
+                </div>
+
+                <p id="selected-patient" class="small-note" style="text-align: left; font-style: italic;">
+                    No patient selected
+                </p>
+
+                <label for="reason-box">Reason for visit</label>
+                <input type="text" id="reason-box" maxlength="200">
+
+                <label for="notes-box">Notes (optional)</label>
+                <textarea id="notes-box" rows="5"></textarea>
+
+                <button type="button" id="save-button" class="button-orange">Save Visit</button>
+                <button type="button" id="clear-button" class="button-grey">Clear</button>
+
+                <p id="visit-message" class="error-text"></p>
+            </div>
+
+            <!-- Right side: Visit history -->
+            <div>
+                <p><strong>Previous visits</strong></p>
+
+                <p id="history-message" class="error-text"></p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Reason</th>
+                            <th>Notes</th>
+                            <th>Recorded by</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-body"></tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="js/common.js"></script>
+    <script src="js/visits.js"></script>
+</body>
+</html>

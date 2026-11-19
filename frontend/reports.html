@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--
+    Sunrise Community Clinic
+    reports.html - the daily appointments report with doctors on duty, and the visits report.
+    By Ronald Chinnasamy
+
+    Requirements:
+    Requires css/style.css for the look
+    Requires js/common.js for the top bar and menu
+    Requires js/reports.js for the two reports.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Sunrise Community Clinic</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <span class="clinic-name">Sunrise Community Clinic</span>
+        <span class="user-info">
+            Logged in as: <span id="user-role"></span> |
+            <a href="#" id="logout-link">Log Out</a>
+        </span>
+    </header>
+
+    <!-- Menu -->
+    <nav class="menu">
+        <a href="patients.html">Patients</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="visits.html" id="visits-tab">Visits</a>
+        <a href="reports.html" id="reports-tab" class="active">Reports</a>
+        <a href="admin.html" id="admin-tab">Administration</a>
+    </nav>
+
+    <!-- Daily report for Receptionists and Administrators -->
+    <section class="page">
+        <h2>Daily Appointments Report</h2>
+
+        <label for="report-date">Date</label>
+        <input type="date" id="report-date">
+        <button type="button" id="daily-button" class="button-orange">Show Report</button>
+
+        <p id="daily-message" class="error-text"></p>
+
+        <p><strong>Doctors on duty</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Doctor</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                </tr>
+            </thead>
+            <tbody id="duty-body"></tbody>
+        </table>
+
+        <p><strong>Appointments</strong></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Doctor</th>
+                    <th>Time</th>
+                    <th>Patient</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="daily-body"></tbody>
+        </table>
+    </section>
+
+    <!-- Visits report-->
+    <section class="page" id="visits-report-section">
+        <h2>Patient Visits Report</h2>
+
+        <div class="form-columns">
+            <div>
+                <label for="from-date">From</label>
+                <input type="date" id="from-date">
+            </div>
+            <div>
+                <label for="to-date">To</label>
+                <input type="date" id="to-date">
+            </div>
+        </div>
+
+        <button type="button" id="visits-button" class="button-orange">Show Report</button>
+
+        <p id="visits-message" class="error-text"></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Patient</th>
+                    <th>Reason</th>
+                    <th>Recorded by</th>
+                </tr>
+            </thead>
+            <tbody id="visits-body"></tbody>
+        </table>
+    </section>
+
+    <script src="js/common.js"></script>
+    <script src="js/reports.js"></script>
+</body>
+</html>

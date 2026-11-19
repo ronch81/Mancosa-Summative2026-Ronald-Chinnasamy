@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!--
+    Sunrise Community Clinic
+    appointments.html - book, reschedule and cancel appointments, and see a doctor's appointments for a day.
+    By Ronald Chinnasamy
+
+    Requirements:
+    Requires css/style.css for the look
+    Requires js/common.js for the top bar and menu
+    Requires js/appointments.js for the booking form and the appointments table.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments - Sunrise Community Clinic</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <span class="clinic-name">Sunrise Community Clinic</span>
+        <span class="user-info">
+            Logged in as: <span id="user-role"></span> |
+            <a href="#" id="logout-link">Log Out</a>
+        </span>
+    </header>
+
+    <!-- Menu tabs-->
+    <nav class="menu">
+        <a href="patients.html">Patients</a>
+        <a href="appointments.html" class="active">Appointments</a>
+        <a href="reports.html">Reports</a>
+        <a href="admin.html" id="admin-tab">Administration</a>
+        <a href="visits.html" id="visits-tab">Visits</a>
+    </nav>
+
+    <section class="page">
+        <h2>Book Appointment</h2>
+
+        <div class="form-columns">
+
+            <!-- Left side -->
+            <div>
+                <!-- Patient Selection -->
+                <div id="patient-part">
+                    <label for="patient-search">Patient (name or ID number)</label>
+                    <input type="text" id="patient-search" placeholder="Search patient">
+                    <button type="button" id="patient-search-button" class="button-orange">Search</button>
+
+                    <div id="patient-choice" style="display: none;">
+                        <label for="patient-select">Matching patients</label>
+                        <select id="patient-select"></select>
+                    </div>
+
+                    <p id="selected-patient" class="small-note" style="text-align: left; font-style: italic;">
+                        No patient selected
+                    </p>
+                </div>
+
+                <label for="doctor-select">Doctor</label>
+                <select id="doctor-select">
+                    <option value="">Select doctor</option>
+                </select>
+
+                <label for="date-box">Date</label>
+                <input type="date" id="date-box">
+
+                <!-- Booking. -->
+                <div id="booking-part">
+                    <label for="time-select">Available time</label>
+                    <select id="time-select">
+                        <option value="">Select available time</option>
+                    </select>
+
+                    <button type="button" id="book-button" class="button-orange">Book Appointment</button>
+                    <button type="button" id="clear-button" class="button-grey">Cancel</button>
+
+                    <p id="booking-message" class="error-text"></p>
+                </div>
+            </div>
+
+            <!-- Right side -->
+            <div>
+                <p><strong>Appointments for selected doctor and date</strong></p>
+
+                <p id="appointments-message" class="error-text"></p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Patient</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointments-body"></tbody>
+                </table>
+
+                <!-- Button actions provided on data selected in left pane -->
+                <div id="appointment-actions">
+                    <button type="button" id="reschedule-button" class="button-grey">Reschedule</button>
+                    <button type="button" id="attended-button" class="button-grey">Mark Attended</button>
+                    <button type="button" id="missed-button" class="button-grey">Mark Missed</button>
+                    <button type="button" id="cancel-appointment-button" class="button-grey">Cancel Appointment</button>
+                </div>
+                
+                <div id="reschedule-panel" style="display: none;">
+                    <p><strong>Reschedule: <span id="reschedule-info"></span></strong></p>
+
+                    <label for="new-date">New date</label>
+                    <input type="date" id="new-date">
+
+                    <label for="new-time">New time</label>
+                    <select id="new-time">
+                        <option value="">Select available time</option>
+                    </select>
+
+                    <button type="button" id="confirm-reschedule-button" class="button-orange">Confirm Reschedule</button>
+                    <button type="button" id="close-reschedule-button" class="button-grey">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="js/common.js"></script>
+    <script src="js/appointments.js"></script>
+</body>
+</html>

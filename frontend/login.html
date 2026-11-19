@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+    Sunrise Community Clinic
+    The login screen.
+    By Ronald Chinnasamy
+
+    Requires css/style.css for the look and js/login.js to send the login to the back end.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In - Sunrise Community Clinic</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Creates an orange bar at the top of the page -->
+    <header class="top-bar">
+        <span class="clinic-name">Sunrise Community Clinic</span>
+    </header>
+
+    <!-- Login area in the middle of the page -->
+    <main class="login-page">
+        <div class="login-card">
+            <h1>Log In</h1>
+            <p class="subtitle">Sunrise Clinic Management System</p>
+
+            <form id="login-form">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username" autocomplete="username">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" autocomplete="current-password">
+
+                <button type="submit" class="button-orange">Log In</button>
+            </form>
+
+            <!-- login.js fills this in when the login fails -->
+            <p id="error-message" class="error-text"></p>
+
+            <p class="small-note">Unauthorised Access. Please contact the clinic administrator.</p>
+        </div>
+    </main>
+
+    <p class="small-note">Integrated Coding Project - Higher Certificate in Coding</p>
+    <p class="small-note">Designed by Ronald Chinnasamy (November 2026)</p>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

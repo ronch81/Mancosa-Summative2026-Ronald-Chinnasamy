@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+    Sunrise Community Clinic
+    admin.html - Used for administration. The administrator can create, edit and deactivate user accounts
+    and set the days and hours each doctor works.
+    By Ronald Chinnasamy
+
+    Requirements:
+    Requires css/style.css for the look
+    Requires js/common.js for the top bar and menu
+    Requires js/admin.js for the user list, the user form and the doctor availability.
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Sunrise Community Clinic</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <span class="clinic-name">Sunrise Community Clinic</span>
+        <span class="user-info">
+            Logged in as: <span id="user-role"></span> |
+            <a href="#" id="logout-link">Log Out</a>
+        </span>
+    </header>
+
+    <!-- Menu tabs -->
+    <nav class="menu">
+        <a href="patients.html">Patients</a>
+        <a href="appointments.html">Appointments</a>
+        <a href="reports.html">Reports</a>
+        <a href="admin.html" id="admin-tab" class="active">Administration</a>
+        <a href="visits.html" id="visits-tab">Visits</a>
+    </nav>
+
+    <!-- List of all users -->
+    <section class="page">
+        <h2>User Accounts</h2>
+
+        <p id="list-message" class="error-text"></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="users-body"></tbody>
+        </table>
+    </section>
+
+    <!-- Add a new user or edit an existing one -->
+    <section class="page">
+        <h2 id="form-title">Add New User</h2>
+
+        <form id="user-form">
+            <div class="form-columns">
+                <div>
+                    <label for="full-name">Full Name *</label>
+                    <input type="text" id="full-name" placeholder="Enter full name">
+
+                    <label for="username">Username *</label>
+                    <input type="text" id="username" placeholder="Enter username">
+
+                    <label for="role">Role *</label>
+                    <select id="role">
+                        <option value="Receptionist">Receptionist</option>
+                        <option value="Doctor">Doctor</option>
+                        <option value="Nurse">Nurse</option>
+                        <option value="Administrator">Administrator</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="password" id="password-label">Password *</label>
+                    <input type="password" id="password" placeholder="Enter password" autocomplete="new-password">
+
+                    <div id="status-field" style="display: none;">
+                        <label for="status">Status</label>
+                        <select id="status">
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive (cannot log in)</option>
+                        </select>
+                    </div>
+
+                    <p class="small-note" style="text-align: left;">
+                        Passwords need at least 8 characters, with an uppercase letter,
+                        a lowercase letter and a number.
+                    </p>
+                </div>
+            </div>
+
+            <button type="submit" id="save-button" class="button-orange">Save User</button>
+            <button type="button" id="clear-button" class="button-grey">Clear Form</button>
+        </form>
+
+        <p id="form-message" class="error-text"></p>
+        <p class="small-note">* Required fields. Usernames must be unique.</p>
+    </section>
+
+    <!-- Set the days and hours a doctor works -->
+    <section class="page">
+        <h2>Doctor Availability</h2>
+
+        <label for="doctor-select">Doctor</label>
+        <select id="doctor-select">
+            <option value="">Select doctor</option>
+        </select>
+
+        <p class="small-note" style="text-align: left;">
+            Enter the start and end time for each day the doctor works, then click Save.
+            Click Remove for a day the doctor does not work.
+        </p>
+
+        <p id="availability-message" class="error-text"></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Start Time</th>
+                    <th>End Time</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="availability-body"></tbody>
+        </table>
+    </section>
+
+    <script src="js/common.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
